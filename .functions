@@ -1,0 +1,186 @@
+.find() {
+  find . -iname "*$1*"
+}
+
+.grep() {
+  grep -irnw $1 .
+}
+
+.installed() {
+   apt list --installed | grep $1
+}
+
+.report() {
+   sudo whoami;
+   file=~/Desktop/report.txt;
+   rm -f $file;
+   touch $file;
+
+   echo "\nuname -a        ================================================= MAGIC\n" >> $file;
+   uname -a >> $file;
+
+   echo "\nlsb_release -a  ================================================= MAGIC\n" >> $file;
+   lsb_release -a >> $file;
+
+   echo "\nfree -h         ================================================= MAGIC\n" >> $file;
+   free -h >> $file;
+
+   echo "\ndf -H           ================================================= MAGIC\n" >> $file;
+   df -H >> $file;
+
+   echo "\nlshw            ================================================= MAGIC\n" >> $file;
+   sudo lshw >> $file;
+
+   echo "\nlscpu           ================================================= MAGIC\n" >> $file;
+   sudo lscpu >> $file;
+
+   echo "\nlsblk -a        ================================================= MAGIC\n" >> $file;
+   sudo lsblk -a >> $file;
+
+   echo "\nlsusb -v        ================================================= MAGIC\n" >> $file;
+   sudo lsusb -v >> $file;
+
+   echo "\nlspci -v        ================================================= MAGIC\n" >> $file;
+   sudo lspci -v >> $file;
+
+   echo "\nfdisk -l        ================================================= MAGIC\n" >> $file;
+   sudo fdisk -l >> $file;
+   
+}
+
+.kill-from-user() {
+   pkill -9 -u `id -u $1`
+}
+
+# echo and then copy same text to clipboard     ---------------- GOOD
+co () {
+  echo $1;
+  echo $1 | xclip -selection clipboard;
+}
+
+# Curl online manpages and pipe to less
+webman () {
+	curl http://man.he.net/\?topic\=$1\&section\=all | less
+}
+
+
+# Calls man pages or fallbacks to webman
+man()
+{
+   echo "Fetching man page for $1 ..."
+
+   res=$(/usr/bin/man $1);
+   code=$?;
+
+   if [ "$code" -eq "0" ];then
+     echo $res | less;
+   else
+     echo "No man page found on system, using webman:";
+     webman $1;
+   fi
+}
+
+# check ports being used by port param $1 passed
+ports2 () {
+  sudo netstat -lpn | grep :$1;
+}
+
+# grep the history faster
+h ()
+{
+  if [ $1 ] ; then
+    history | grep $1;
+  else
+    echo "pass a param!";
+  fi
+}
+
+# Creates an archive (*.tar.gz) from given directory.
+maketar ()
+{
+  tar cvzf "${1%%/}.tar.gz"  "${1%%/}/";
+}
+
+# Create a ZIP archive of a file or folder.
+makezip ()
+{
+  zip -r "${1%%/}.zip" "$1" ;
+}
+
+# Shows ps for current user
+my_ps () {
+  ps $@ -u $USER -o pid,%cpu,%mem,command;
+}
+
+## greps my user processes by param
+pp () {
+  my_ps f | awk '!/awk/ && $0~var' var=${1:-".*"};
+}
+
+open () {
+  nautilus $1 &;
+}
+
+findZombieParent() {
+  pstree -p -s $1;
+}
+
+encrypt () {
+  openssl aes-256-cbc -a < $1 > $1.encrypted;
+}
+
+decrypt () {
+  openssl aes-256-cbc -a -d < $1 > $1.decrypted;
+}
+
+extract() {
+ if [ -z "$1" ]; then
+  # display usage if no parameters given
+  echo "Usage: extract <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
+ else
+   if [ -f $1 ] ; then
+     NAME=${1%.*}
+     mkdir $NAME && cd $NAME
+     case $1 in
+       *.tar.bz2)   tar xvjf ../$1    ;;
+       *.tar.gz)    tar xvzf ../$1    ;;
+       *.tar.xz)    tar xvJf ../$1    ;;
+       *.lzma)      unlzma ../$1      ;;
+       *.bz2)       bunzip2 ../$1     ;;
+       *.rar)       unrar x -ad ../$1 ;;
+       *.gz)        gunzip ../$1      ;;
+       *.tar)       tar xvf ../$1     ;;
+       *.tbz2)      tar xvjf ../$1    ;;
+       *.tgz)       tar xvzf ../$1    ;;
+       *.zip)       unzip ../$1       ;;
+       *.Z)         uncompress ../$1  ;;
+       *.7z)        7z x ../$1        ;;
+       *.xz)        unxz ../$1        ;;
+       *.exe)       cabextract ../$1  ;;
+       *)           echo "extract: '$1' - unknown archive method" ;;
+     esac
+   else
+     echo "$1 - file does not exist"
+   fi
+ fi
+}
+
+# commented:
+
+# For playing videos to chromecast
+#play_video () {
+#  curl -H "Content-Type: application/json" http://192.168.1.78:8008/apps/YouTube -X POST -d 'v=$1';
+#}
+
+
+# convertToPFX() {
+#     openssl pkcs12 -inkey $1 -in $2 -export -out result.pfx
+# }
+
+#tsung_test() {
+#  tsung -f $1 start
+#}
+
+#taurus() {
+#  bzt $1
+#}

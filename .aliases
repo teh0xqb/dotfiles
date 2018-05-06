@@ -1,0 +1,114 @@
+
+# Table of Contents
+
+## MAIN
+## NETWORK
+## LINUX
+## DATASTAX
+## SAMPLES
+## TYPOS
+## SSH
+## COMMENTED
+
+# ================================= MAIN ===================================
+alias ssh="ssh -A"
+alias mkdir="mkdir -p"
+alias .reload=". ~/.zshrc"
+alias .brc="vim ~/.zshrc"
+alias .bp="vim ~/.profile"
+alias .bf="vim ~/.functions"
+alias .ba="vim ~/.aliases"
+alias .vimrc="vim ~/.vimrc"
+alias git=hub
+
+# ================================ NETWORK =================================
+
+alias .flush-dns="sudo /etc/init.d/dns-clean"
+alias .ext-ip="curl http://ip-api.com/json | sed \"s/,/\\n/g\""
+alias .ports='sudo netstat -ntlp | grep LISTEN'
+alias .ports3="sudo lsof -nP -i | grep LISTEN"
+alias .open-ports="nmap -v -sT localhost"
+alias .open-ports2="sudo nmap -v -sS localhost"
+alias .hosts="sudo vim /etc/hosts"
+alias .conf="cd /etc/nginx/conf.d"
+
+# ================================ LINUX ===================================
+
+# -- for the linux kernel sources
+alias .src="cd /usr/src"
+
+# -- update grub conf with images under /boot:
+alias .ugrub="sudo update-grub2"
+
+alias .apt="cd /etc/apt/sources.list.d"
+
+alias .addUserToGroup="usermod -a -G group user"
+alias .groups="echo cut -d: -f1 /etc/group | sort"
+alias .users="echo cut -d: -f1 /etc/passwd | sort"
+
+alias .zombies="ps aux | grep 'Z'"
+
+# ================================ DATASTAX ================================
+
+alias .gr='"$(git rev-parse --show-toplevel)"/gradlew'
+alias .opsc="cd /code/ripcord"
+alias .opscd="cd /code/ripcord/opscenterd"
+
+alias .ldev=".opscd; npm run lcm-dev -- --watch"
+alias .ltest=".opscd; npm run lcm-test -- --watch"
+alias .llint=".opscd; npm run lcm-lint"
+alias .ro=".opscd; .gr clean && .gr devAssemble"
+alias .so=".opscd; ./bin/opscenter -f"
+alias .da=".ro && .so"
+
+# ============================ SHORTCUTS ==================================
+alias pdf="evince"
+alias c="cd /code"
+alias .d="cd ~/Desktop"
+alias .ssh="vim ~/.ssh/config"
+alias branches="git branch --sort=-committerdate"
+alias npmli="npm list -g --depth 0"
+
+# ============================== SAMPLES ====================================
+
+#alias .s-e="echo 'll | grep mime | awk $(echo '"{print $9}"') | sed s/types/works/'"
+alias .s-gf="echo 'grep __main__' 'find . *.py'"
+alias .s-find="co 'find . -type {f|d} -perm 777 -iname *.php'"
+alias .s-gs="/usr/bin/gs -dQUIET -dPARANOIDSAFER -dBATCH -dNOPAUSE -dNOPROMPT -sDEVICE=png16m -dTextAlphaBits=4 -dGraphicsAlphaBits=4 -r72 -dFirstPage=1 -dLastPage=1 -sOutputFile=board.png board_applicationseamlessdocs.pdf"
+alias .s-convert="convert test.pdf -background white -alpha remove -density 500 test-2-%d.tiff"
+alias .s-scp="echo scp -P port -r user@ip:remote-path local-path"
+alias .s-chmod-group="chmod g+s /path/to/parent"
+alias .s-sort="echo hello | sort"
+alias .s-cut="echo cut command"
+alias .s-pr='echo something with mult columns "| pr -ts" separator " --columns 5"'
+#alias .s-xargs="echo 'pgrep gunicorn | xargs kill'"
+
+# =============================== TYPOS =======================================
+
+alias tial="tail"
+alias gti="git"
+
+# ================================= SSH ====================================
+
+alias .ssh-copy-id="ssh-copy-id user@remote_host"
+alias .ssh-tunnel="ssh -f -N -L 8888:example.com:80 username@remote_host"
+
+# =============================== COMMENTED ===============================
+
+# alias .n="cd /code/notube"
+# alias .r="cd /code/fbi-api"
+# alias .mei="cd /code/mei/desktop"
+# alias .serv="cd $HOME/servers"
+# alias .scheme="guile"
+# alias .yaas="co 104.236.17.123"
+# alias .pc-model="co VPCF2290X"
+#alias .filewatch='filewatcher "*.rb" "pwd; ruby $FILENAME"'
+#alias .line="echo $LINENO"
+#alias .check-wpa="ps aux | grep wpa"
+#alias tsung-report="/usr/lib/tsung/bin/tsung_stats.pl"
+#alias ember-debug="DEBUG=* ember"
+#alias .docker="sudo systemctl start docker"
+#alias .docker-postgresql="sudo docker run -p 5432:5432 -it postgres -p 5432"
+#alias .most-used=history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10
+# alias .ria="co 45.55.191.140"
+# java -jar target/uberjar/clojure-noob-0.1.0-SNAPSHOT-standalone.jar
