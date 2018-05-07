@@ -1,3 +1,29 @@
 [user]
 	email = quilesbaker@gmail.com
 	name = Joel Quiles
+[alias]
+	sdiff = "!git diff &amp;&amp; git submodule foreach 'git diff’"
+	spush = push --recurse-submodules=on-demand
+        tags-has-hash = tag --contains
+	supdate = submodule update --remote --merge
+	lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	lg = !"git lg1"
+[core]
+	excludesfile = ~/.gitignore_global
+[diff]
+        tool = meld
+[difftool]
+          prompt = false
+[difftool "meld"]
+          trustExitCode = true
+            cmd = meld \"$LOCAL\" \"$PWD/$REMOTE\"
+[push]
+	default = current
+[merge]
+	tool = meld
+[mergetool]
+          prompt = false
+[mergetool "meld"]
+          trustExitCode = true
+            cmd = meld --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
