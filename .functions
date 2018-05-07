@@ -165,6 +165,26 @@ extract() {
  fi
 }
 
+function dump-traffic()
+{
+  sudo tcpdump -i lo0 -s 0 -B 524288 port $1 -w ~/Desktop/DumpFile$1.pcap
+}
+
+gwd()
+{
+   a=`git symbolic-ref HEAD`;
+   echo ${a#refs/heads/};
+}
+
+function sserver() {
+   sudo python -m SimpleHTTPServer $1
+}
+
+function ssh-agent(){
+  eval `ssh-agent -s`
+  ssh-add ~/.ssh/id_rsa
+}
+
 # commented:
 
 # For playing videos to chromecast
