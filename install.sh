@@ -12,6 +12,11 @@ do
     fi
 done
 
-echo Installing oh-my-zsh...
+if [ ! -d ~/.oh-my-zsh ]; then
+  echo Installing oh-my-zsh...
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+if [ ! -d /code ]; then
+  echo You should create /code and chown to regular user
+if
