@@ -9,14 +9,6 @@ export BOOT_JVM_OPTIONS="-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 
 export LEIN_SNAPSHOTS_IN_RELEASE="Y"
 export N_PREFIX=~/n
 
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
-fi
-
-if [ -f ~/.functions ]; then
-    . ~/.functions
-fi
-
-if [ -f ~/.environment ]; then
-    . ~/.environment
-fi
+[ -f ~/.aliases ] && . ~/.aliases
+[ -f ~/.functions ] && . ~/.functions
+[ -f ~/.environment ] && . ~/.environment
