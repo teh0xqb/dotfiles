@@ -4,6 +4,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/home/thehex/.oh-my-zsh
 
+ulimit -n 10000
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -51,15 +53,14 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git npm extract node)
+plugins=(git npm node bower brew osx extract z docker vagrant zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-if [ -f ~/.profile ]; then
-    . ~/.profile
-fi
+[ -f ~/.profile ] && . ~/.profile
 
-# export MANPATH="/usr/local/man:$MANPATH"
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_HIGHLIGHT_PATTERNS=('rm -rf *' 'fg=white,bold,bg=red')
 
 export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
