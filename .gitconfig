@@ -27,3 +27,5 @@
 [mergetool "meld"]
           trustExitCode = true
             cmd = meld --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
+[help]
+        autocorrect = 10
