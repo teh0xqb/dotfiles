@@ -48,7 +48,7 @@ alias .users="echo cut -d: -f1 /etc/passwd | sort"
 
 alias .zombies="ps aux | grep 'Z'"
 
-# ================================ DATASTAX ================================
+# ================================ DATASTAX =================================
 
 alias .gr='"$(git rev-parse --show-toplevel)"/gradlew'
 alias .opsc="cd /code/ripcord"
@@ -61,15 +61,28 @@ alias .ro=".opscd; .gr clean && .gr devAssemble"
 alias .so=".opscd; ./bin/opscenter -f"
 alias .da=".ro && .so"
 
-# ============================ SHORTCUTS ==================================
+alias .ccm="cd ~/.ccm"
+alias .agent=".opsc; cd agent;"
+alias .im="cd $rip; cd insights"
+alias .imu=".im; cd insights-ui"
+alias .ctool="vim ~/.automaton.conf"
+alias .c="ctool"
+alias .cenv="source $rip/ctoolenv/bin/activate"
+alias .mock="co http://localhost:8888/opscenter/js/ripcord/tests/mockgenerator.html"
+alias .test_agent='lein quickie "opsagent.metrics.test-jmx"'
+alias .s-keyspace="echo \"CREATE  KEYSPACE IF NOT EXISTS joels WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 2} AND DURABLE_WRITES =  true;\""
+
+# ============================ SHORTCUTS ======================================
 alias pdf="evince"
 alias c="cd /code"
 alias .d="cd ~/Desktop"
 alias .ssh="vim ~/.ssh/config"
 alias branches="git branch --sort=-committerdate"
 alias npmli="npm list -g --depth 0"
+alias .leinless="lein trampoline repl :headless"
+alias .res='echo $?'
 
-# ============================== SAMPLES ====================================
+# ============================== SAMPLES ======================================
 
 #alias .s-e="echo 'll | grep mime | awk $(echo '"{print $9}"') | sed s/types/works/'"
 alias .s-gf="echo 'grep __main__' 'find . *.py'"
@@ -82,18 +95,21 @@ alias .s-sort="echo hello | sort"
 alias .s-cut="echo cut command"
 alias .s-pr='echo something with mult columns "| pr -ts" separator " --columns 5"'
 #alias .s-xargs="echo 'pgrep gunicorn | xargs kill'"
+alias .s-formatpatch="echo 'git format-patch 6.1.x --stdout > ~/Desktop/actions_changes.patch'"
+alias .s-json-vim=":%!python -m json.tool"
+
 
 # =============================== TYPOS =======================================
 
 alias tial="tail"
 alias gti="git"
 
-# ================================= SSH ====================================
+# ================================= SSH =======================================
 
 alias .ssh-copy-id="ssh-copy-id user@remote_host"
 alias .ssh-tunnel="ssh -f -N -L 8888:example.com:80 username@remote_host"
 
-# =============================== COMMENTED ===============================
+# =============================== COMMENTED ===================================
 
 # alias .n="cd /code/notube"
 # alias .r="cd /code/fbi-api"
