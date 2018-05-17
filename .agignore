@@ -1,0 +1,11 @@
+node_modules/
+logs/
+log/
+*\.log
+*\.db
+*\.bundle.js
+build/client/
+.idea
+dist/
+bower_components/
+package-lock.json
