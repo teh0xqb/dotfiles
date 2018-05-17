@@ -12,6 +12,7 @@
 
 # ================================= MAIN ===================================
 alias ssh="ssh -A"
+alias ag="ag --hidden"
 alias mkdir="mkdir -p"
 alias .reload=". ~/.zshrc"
 alias .brc="vim ~/.zshrc"
@@ -53,6 +54,7 @@ alias .zombies="ps aux | grep 'Z'"
 alias .gr='"$(git rev-parse --show-toplevel)"/gradlew'
 alias .opsc="cd /code/ripcord"
 alias .opscd="cd /code/ripcord/opscenterd"
+alias .lcmu=".opscd; cd src/js/spock"
 
 alias .ldev=".opscd; npm run lcm-dev -- --watch"
 alias .ltest=".opscd; npm run lcm-test -- --watch"
@@ -63,8 +65,8 @@ alias .da=".ro && .so"
 
 alias .ccm="cd ~/.ccm"
 alias .agent=".opsc; cd agent;"
-alias .im="cd $rip; cd insights"
-alias .imu=".im; cd insights-ui"
+alias .im="c; cd insights"
+alias .imu=".im; cd ui"
 alias .ctool="vim ~/.automaton.conf"
 alias .c="ctool"
 alias .cenv="source $rip/ctoolenv/bin/activate"
