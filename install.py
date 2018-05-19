@@ -27,3 +27,9 @@ def createSymLinks():
                 print "Couldn't symlink file: {}. File exists.".format(fileName)
 
 createSymLinks()
+
+# TODO: copy even some dirs
+# auto install ansible?
+# TODO: maybe create ansible playbook, call that to install... those...
+# TODO: Install some sys dependencies if they don't exist (like ruby, clojure, boot, nodejs), oh-my-zsh, tmux
+# TODO: The repo installs here should be idempotent

@@ -21,6 +21,8 @@ alias .bf="vim ~/.functions"
 alias .ba="vim ~/.aliases"
 alias .vimrc="vim ~/.vimrc"
 alias git=hub
+alias .e="emacsclient -n"
+alias .all_fns="typeset -f"
 
 # ================================ NETWORK =================================
 
@@ -70,6 +72,7 @@ alias .imu=".im; cd ui"
 alias .ctool="vim ~/.automaton.conf"
 alias .c="ctool"
 alias .cenv="source $rip/ctoolenv/bin/activate"
+alias .venv="source $rip/venv/bin/activate"
 alias .mock="co http://localhost:8888/opscenter/js/ripcord/tests/mockgenerator.html"
 alias .test_agent='lein quickie "opsagent.metrics.test-jmx"'
 alias .s-keyspace="echo \"CREATE  KEYSPACE IF NOT EXISTS joels WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 2} AND DURABLE_WRITES =  true;\""
