@@ -2,6 +2,7 @@
 # Table of Contents
 
 ## MAIN
+## UTILS
 ## NETWORK
 ## LINUX
 ## DATASTAX
@@ -24,8 +25,17 @@ alias git=hub
 alias .e="emacsclient -n"
 alias .all_fns="typeset -f"
 
+# ================================ UTILS =================================
+alias .diffcurr="diff2html -s line -f html -d word -i command -o preview"
+alias .difforigin="diff2html -s line -f html -d word -i command -o preview -M"
+alias .scs="pageres" # take screenshot of website and output to current dir
+alias .ke="ps -u `whoami` | grep emacs/ | head -1 | .col 2 | xargs kill -9"
+alias .npmg="ls /usr/local/lib/node_modules"
+alias .packages="brew list; .npmg;"
+
 # ================================ NETWORK =================================
 
+alias .loadtest="loadtest -n 1000 -c 20 -k"
 alias .flush-dns="sudo /etc/init.d/dns-clean"
 alias .ext-ip="curl http://ip-api.com/json | sed \"s/,/\\n/g\""
 alias .ports='sudo netstat -ntlp | grep LISTEN'

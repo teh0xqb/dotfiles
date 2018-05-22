@@ -12,6 +12,9 @@ do
     fi
 done
 
+# use zsh as default shell
+# chsh -s $(which zsh)
+
 # Install oh-my-zsh
 # if [ ! -d ~/.oh-my-zsh ]; then
 #   echo Installing oh-my-zsh...
