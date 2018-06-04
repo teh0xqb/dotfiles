@@ -6,6 +6,9 @@ log/
 *\.bundle.js
 build/client/
 .idea
+.node-gyp/
 dist/
+/code/ui-shared/es
+/code/ui-shared/lib
 bower_components/
 package-lock.json

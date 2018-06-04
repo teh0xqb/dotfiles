@@ -32,6 +32,7 @@ alias .scs="pageres" # take screenshot of website and output to current dir
 alias .ke="ps -u `whoami` | grep emacs/ | head -1 | .col 2 | xargs kill -9"
 alias .npmg="ls /usr/local/lib/node_modules"
 alias .packages="brew list; .npmg;"
+alias .hf="ls -al | ag "^-" | .col 9 | ag '^\.' | column"
 
 # ================================ NETWORK =================================
 
@@ -87,6 +88,9 @@ alias .mock="co http://localhost:8888/opscenter/js/ripcord/tests/mockgenerator.h
 alias .test_agent='lein quickie "opsagent.metrics.test-jmx"'
 alias .s-keyspace="echo \"CREATE  KEYSPACE IF NOT EXISTS joels WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 2} AND DURABLE_WRITES =  true;\""
 
+alias .cqlsh="cqlsh -u cassandra -p newpasspass 10.200.175.234"
+alias .jmiops=".reload; .cenv; .c info jmiops;"
+
 # ============================ SHORTCUTS ======================================
 alias pdf="evince"
 alias c="cd /code"
@@ -118,6 +122,7 @@ alias .s-json-vim=":%!python -m json.tool"
 
 alias tial="tail"
 alias gti="git"
+alias vi="vim"
 
 # ================================= SSH =======================================
 
