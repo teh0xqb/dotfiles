@@ -1,6 +1,5 @@
 .idea/
 *.jshintrc
-*.eslintrc
 *.jscsrc
 .projectile
 
