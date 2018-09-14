@@ -93,6 +93,8 @@ alias .s-keyspace="echo \"CREATE  KEYSPACE IF NOT EXISTS joels WITH REPLICATION 
 
 alias .cqlsh="cqlsh -u cassandra -p newpasspass 10.200.175.234"
 
+alias .bdc="docker-compose build --build-arg GITHUB_TOKEN=${CLOUD_GITHUB_TOKEN} --build-arg NPM_TOKEN=${NPM_TOKEN}"
+
 # ============================ SHORTCUTS ======================================
 alias pdf="evince"
 alias c="cd /code"

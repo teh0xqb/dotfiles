@@ -15,6 +15,7 @@
 (def c-prefix "https://issues.apache.org/jira/browse/")
 (def urls {:opsc (str ds-prefix "OPSC-")
            :studio (str ds-prefix "STUDIO-")
+           :cloud (str ds-prefix "CP-")
            :im (str ds-prefix "IM-")
            :cassandra (str c-prefix "CASSANDRA-")})
 
@@ -22,6 +23,11 @@
   [prj number]
   (opn
    (str (urls prj) number)))
+
+(defn confluence
+  [article]
+  (opn
+   "https://datastax.jira.com/wiki/spaces/DMC/pages/656474186/GraphQL+schema"))
 
 (defn exit [code]
   (.exit process code))
@@ -33,7 +39,7 @@
 (defn validate-in
   "Ensure right format (project prefix with ticket number)"
   [in]
-  (re-matches #"(o|c|s|i)\d+$" in))
+  (re-matches #"((o|c|n|s|i)\d+|g)$" in))
 
 (defn display-prefixes-help
   ""
@@ -43,6 +49,8 @@
             "Possible inputs:\n"
             "o123 -> OPSC-123\n"
             "i40 -> IM-40\n"
+            "g -> confluence cloud graphql schema wiki article"
+            "n30 -> CP-30\n"
             "c3000 -> CASSANDRA-3000\n"
             "s40 -> STUDIO-40")))
 
@@ -72,6 +80,8 @@
       "o" (jira :opsc (in->ticket arg))
       "i" (jira :im (in->ticket arg))
       "s" (jira :studio (in->ticket arg))
+      "g" (confluence "schema")
+      "n" (jira :cloud (in->ticket arg))
       "c" (jira :cassandra (in->ticket arg))
       (do
         (println "No match.")
