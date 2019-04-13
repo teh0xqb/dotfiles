@@ -36,6 +36,11 @@ alias .hf="ls -al | ag "^-" | .col 9 | ag '^\.' | column"
 ## alias ogc='open -a Google\ Chrome --args --disable-web-security'
 alias ogc="open -na Google\ Chrome --args --user-data-dir=/tmp/temp_chrome_user_data_dir --disable-web-security"
 
+alias .cf="gco -- src; npm run format; git diff src"
+
+alias .gifm='make docker-convert args="-i cloud-connection-details-tg.mp4 -o myMovie.gif"'
+alias ls="colorls"
+
 # ================================ NETWORK =================================
 
 alias .loadtest="loadtest -n 1000 -c 20 -k"
@@ -85,7 +90,8 @@ alias .imu=".im; cd ui"
 alias .ussr="c; cd cloud; cd self-service-ui;"
 alias .ctool="vim ~/.automaton.conf"
 alias .c="ctool"
-alias .cenv="source /srv/rip/ctoolenv/bin/activate"
+alias .cenv="pyenv activate ctool-env"
+#alias .cenv="source /srv/rip/ctoolenv/bin/activate"
 alias .venv="source $rip/venv/bin/activate"
 alias .mock="co http://localhost:8888/opscenter/js/ripcord/tests/mockgenerator.html"
 alias .test_agent='lein quickie "opsagent.metrics.test-jmx"'
@@ -94,6 +100,8 @@ alias .s-keyspace="echo \"CREATE  KEYSPACE IF NOT EXISTS joels WITH REPLICATION 
 alias .cqlsh="cqlsh -u cassandra -p newpasspass 10.200.175.234"
 
 alias .bdc="docker-compose build --build-arg GITHUB_TOKEN=${CLOUD_GITHUB_TOKEN} --build-arg NPM_TOKEN=${NPM_TOKEN}"
+
+alias ritz="WEBSITE_URI=http://localhost:8080 npx testcafe --debug-on-fail chrome src/js/tests/integration/**/*.js"
 
 # ============================ SHORTCUTS ======================================
 alias pdf="evince"
@@ -132,6 +140,7 @@ alias vi="vim"
 
 alias .ssh-copy-id="ssh-copy-id user@remote_host"
 alias .ssh-tunnel="ssh -f -N -L 8888:example.com:80 username@remote_host"
+alias .aws="echo ec2-13-59-101-246.us-east-2.compute.amazonaws.com"
 
 # =============================== COMMENTED ===================================
 
@@ -152,3 +161,5 @@ alias .ssh-tunnel="ssh -f -N -L 8888:example.com:80 username@remote_host"
 #alias .most-used=history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10
 # alias .ria="co 45.55.191.140"
 # java -jar target/uberjar/clojure-noob-0.1.0-SNAPSHOT-standalone.jar
+
+eval $(thefuck --alias)

@@ -57,6 +57,7 @@
 (defn help-n-exit [st code]
   (println st)
   (display-prefixes-help)
+  (println "KTHXBYE")
   (exit code))
 
 (defn first-letter [st]
@@ -91,7 +92,7 @@
 (defn -main "" []
   (println "Ahoy!")
   (process-args)
-  (println "Opening. Good-bye!")
+  (println "Opening. KTHXBYE")
   (.exit process 0))
 
 (set! *main-cli-fn* -main)

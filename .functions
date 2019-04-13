@@ -2,6 +2,10 @@
   find . -iname "*$1*"
 }
 
+.mos () {
+  jira issue jql "assignee = currentUser() and status not in (closed, certified, testing)"
+}
+
 # just USE AG!
 #.grep() {
 #  grep -irnw $1 .
@@ -272,3 +276,5 @@ function realpath()
 
 	$success
 }
+
+

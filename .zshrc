@@ -7,7 +7,18 @@ export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#ZSH_THEME="spaceship"
 ZSH_THEME="robbyrussell"
+SPACESHIP_PROMPT_ADD_NEWLINE="true"
+SPACESHIP_GIT_BRANCH_SHOW="false"
+SPACESHIP_PROMPT_DEFAULT_PREFIX=""
+SPACESHIP_DIR_SHOW="false"
+SPACESHIP_CHAR_SYMBOL=" \uf0e7"
+SPACESHIP_CHAR_PREFIX="\uf296"
+SPACESHIP_CHAR_SUFFIX=(" ")
+SPACESHIP_CHAR_COLOR_SUCCESS="yellow"
+SPACESHIP_PROMPT_FIRST_PREFIX_SHOW="false"
+SPACESHIP_USER_SHOW="false"
 
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="true"
@@ -69,3 +80,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #unset GNUPLOT_DRIVER_DIR # unexport/clear env var
+export PATH="/usr/local/opt/node@10/bin:$PATH"
+
+#eval $(thefuck --alias f)
+source $(dirname $(gem which colorls))/tab_complete.sh

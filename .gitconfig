@@ -3,6 +3,7 @@
 	name = Joel Quiles
 [alias]
 	sdiff = "!git diff &amp;&amp; git submodule foreach 'git diff’"
+  review = "!f() { git fetch && git checkout origin/$1; }; f"
 	spush = push --recurse-submodules=on-demand
         tags-has-hash = tag --contains
 	supdate = submodule update --remote --merge
@@ -29,3 +30,9 @@
             cmd = meld --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
 [help]
         autocorrect = 10
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
