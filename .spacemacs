@@ -31,25 +31,21 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     octave
      ruby
      markdown
      nginx
-     ;; sql
-     ;; vimscript
+     sql
      yaml
      html
      clojure
      helm
      auto-completion
      emacs-lisp
-     ;; markdown
      python
      ;; c-c++
-     ;; go
      javascript
-     typescript
      react
-     ;; ruby
      ;; syntax-checking
      )
    ;; List of additional packages that will be installed without being
@@ -62,7 +58,7 @@ values."
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(speedbar
-                                    golder-ratio)
+                                    company-tern)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -136,8 +132,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("DejaVu Sans Mono"
-                               :size 18
+   dotspacemacs-default-font '("Fira Code"
+                               :size 17
                                :weight normal
                                :width normal
                                :powerline-scale 1.0)
@@ -293,6 +289,8 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+
+  ;(mac-auto-operator-composition-mode)
   )
 
 (defun dotspacemacs/user-config ()
@@ -303,9 +301,10 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+
   (evil-ex-define-cmd "q[uit]" nil)
   (setq powerline-default-separator nil)
-  (load "/Users/joelbaker/.emacs.d/private/abbr.el")
+  ;(load "/Users/joelbaker/.emacs.d/private/abbr.el")
   (setq auto-completion-return-key-behavior nil)
   (setq auto-completion-tab-key-behavior 'complete)
   (setq auto-completion-complete-with-key-sequence-delay 0.5)
@@ -321,7 +320,10 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (tide typescript-mode nginx-mode rainbow-mode sql-indent groovy-mode go-guru go-eldoc company-go go-mode vimrc-mode dactyl-mode robe bundler rvm ruby-tools ruby-test-mode rubocop rspec-mode rbenv rake minitest chruby inf-ruby pug-mode haml-mode web-completion-data powerline request parent-mode projectile flx smartparens iedit anzu evil goto-chg undo-tree diminish hydra spinner eval-sexp-fu highlight pkg-info epl bind-map bind-key packed f dash s helm avy helm-core async popup yapfify py-isort markdown-mode livid-mode skewer-mode simple-httpd live-py-mode json-snatcher json-reformat js2-mode fuzzy pos-tip flycheck dash-functional tern company clojure-snippets inflections edn multiple-cursors paredit seq peg cider queue clojure-mode yasnippet anaconda-mode pythonic auto-complete winum uuidgen toc-org org-plus-contrib org-bullets link-hint hide-comnt eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff dumb-jump column-enforce-mode yaml-mode xterm-color xkcd ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package tagedit stock-ticker spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-yapf popwin pip-requirements persp-mode pcre2el paradox page-break-lines pacmacs orgit open-junk-file neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eshell-prompt-extras esh-help emmet-mode elisp-slime-nav eclim dockerfile-mode disaster define-word cython-mode company-web company-tern company-statistics company-quickhelp company-c-headers company-anaconda coffee-mode cmake-mode clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game))))
+    (lv sesman parseedn parseclj a tide typescript-mode nginx-mode rainbow-mode sql-indent groovy-mode go-guru go-eldoc company-go go-mode vimrc-mode dactyl-mode robe bundler rvm ruby-tools ruby-test-mode rubocop rspec-mode rbenv rake minitest chruby inf-ruby pug-mode haml-mode web-completion-data powerline request parent-mode projectile flx smartparens iedit anzu evil goto-chg undo-tree diminish hydra spinner eval-sexp-fu highlight pkg-info epl bind-map bind-key packed f dash s helm avy helm-core async popup yapfify py-isort markdown-mode livid-mode skewer-mode simple-httpd live-py-mode json-snatcher json-reformat js2-mode fuzzy pos-tip flycheck dash-functional tern company clojure-snippets inflections edn multiple-cursors paredit seq peg cider queue clojure-mode yasnippet anaconda-mode pythonic auto-complete winum uuidgen toc-org org-plus-contrib org-bullets link-hint hide-comnt eyebrowse evil-visual-mark-mode evil-unimpaired evil-ediff dumb-jump column-enforce-mode yaml-mode xterm-color xkcd ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package tagedit stock-ticker spacemacs-theme spaceline smooth-scrolling smeargle slim-mode shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-yapf popwin pip-requirements persp-mode pcre2el paradox page-break-lines pacmacs orgit open-junk-file neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md flycheck-pos-tip flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eshell-prompt-extras esh-help emmet-mode elisp-slime-nav eclim dockerfile-mode disaster define-word cython-mode company-web company-statistics company-quickhelp company-c-headers company-anaconda coffee-mode cmake-mode clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell 2048-game)))
+ '(projectile-globally-ignored-directories
+   (quote
+    (".idea" ".ensime_cache" ".eunit" ".git" ".hg" ".fslckout" "_FOSSIL_" ".bzr" "_darcs" ".tox" ".svn" ".stack-work" "node_modules" "logs"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

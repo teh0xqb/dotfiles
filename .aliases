@@ -5,7 +5,8 @@
 ## UTILS
 ## NETWORK
 ## LINUX
-## DATASTAX
+## DS
+## PPTP
 ## SAMPLES
 ## TYPOS
 ## SSH
@@ -21,7 +22,7 @@ alias .bp="vim ~/.profile"
 alias .bf="vim ~/.functions"
 alias .ba="vim ~/.aliases"
 alias .vimrc="vim ~/.vimrc"
-alias git=hub
+#alias git=hub
 alias .e="emacsclient -n"
 alias .all_fns="typeset -f"
 
@@ -39,13 +40,12 @@ alias ogc="open -na Google\ Chrome --args --user-data-dir=/tmp/temp_chrome_user_
 alias .cf="gco -- src; npm run format; git diff src"
 
 alias .gifm='make docker-convert args="-i cloud-connection-details-tg.mp4 -o myMovie.gif"'
-alias ls="colorls"
 
 # ================================ NETWORK =================================
 
 alias .loadtest="loadtest -n 1000 -c 20 -k"
 alias .flush-dns="sudo /etc/init.d/dns-clean"
-alias .ext-ip="curl http://ip-api.com/json | sed \"s/,/\\n/g\""
+alias .ext-ip="curl http://ip-api.com/json" # | sed \"s/,/\\n/g\""
 alias .ports='sudo netstat -ntlp | grep LISTEN'
 alias .ports3="sudo lsof -nP -i | grep LISTEN"
 alias .open-ports="nmap -v -sT localhost"
@@ -69,43 +69,21 @@ alias .users="echo cut -d: -f1 /etc/passwd | sort"
 
 alias .zombies="ps aux | grep 'Z'"
 
-# ================================ DATASTAX =================================
-
+# ================================ DS =================================
 alias .gr='"$(git rev-parse --show-toplevel)"/gradlew'
-alias .opsc="cd /code/ripcord"
-alias .opscd="cd /code/ripcord/opscenterd"
-alias .lcmu=".opscd; cd src/js/spock"
-
 alias .ldev=".opscd; npm run lcm-dev -- --watch"
 alias .ltest=".opscd; npm run lcm-test -- --watch"
-alias .llint=".opscd; npm run lcm-lint"
-alias .ro=".opscd; .gr clean && .gr devAssemble"
-alias .so=".opscd; ./bin/opscenter -f"
-alias .da=".ro && .so"
-
-alias .ccm="cd ~/.ccm"
-alias .agent=".opsc; cd agent;"
-alias .im="c; cd insights"
-alias .imu=".im; cd ui"
-alias .ussr="c; cd cloud; cd self-service-ui;"
-alias .ctool="vim ~/.automaton.conf"
-alias .c="ctool"
-alias .cenv="pyenv activate ctool-env"
-#alias .cenv="source /srv/rip/ctoolenv/bin/activate"
-alias .venv="source $rip/venv/bin/activate"
-alias .mock="co http://localhost:8888/opscenter/js/ripcord/tests/mockgenerator.html"
-alias .test_agent='lein quickie "opsagent.metrics.test-jmx"'
+alias .cenv="pyenv activate my-env"
 alias .s-keyspace="echo \"CREATE  KEYSPACE IF NOT EXISTS joels WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 2} AND DURABLE_WRITES =  true;\""
-
-alias .cqlsh="cqlsh -u cassandra -p newpasspass 10.200.175.234"
-
-alias .bdc="docker-compose build --build-arg GITHUB_TOKEN=${CLOUD_GITHUB_TOKEN} --build-arg NPM_TOKEN=${NPM_TOKEN}"
-
 alias ritz="WEBSITE_URI=http://localhost:8080 npx testcafe --debug-on-fail chrome src/js/tests/integration/**/*.js"
+
+# ============================== PPTP =========================================
+.run=npm run dev | ./node_modules/bunyan/bin/bunyan -l trace
 
 # ============================ SHORTCUTS ======================================
 alias pdf="evince"
-alias c="cd /code"
+alias c="cd ~/code"
+alias .bi="c; cd BI"
 alias .d="cd ~/Desktop"
 alias .ssh="vim ~/.ssh/config"
 alias branches="git branch --sort=-committerdate"
